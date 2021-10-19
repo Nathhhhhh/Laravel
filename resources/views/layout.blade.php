@@ -19,6 +19,37 @@
         </style>
     </head>
     <body>
+
+        <nav class="navbar is-dark">
+            <div class="navbar-menu">   
+                <div class="navbar-start">
+                   
+                    @include('partials.navbar-item',['lien'=>'/', 'texte'=>'Accueil'])
+                    {{-- à la place de  @if (auth()->check()) --}}
+                    @auth 
+                    @include('partials.navbar-item',['lien'=>auth()->user()->email, 'texte'=>auth()->user()->email])
+                    @endauth
+                </div>
+                <div class="navbar-end">
+                    @auth
+                
+                    @include('partials.navbar-item',['lien'=>'moncompte', 'texte'=>'Mon compte'])
+                    @include('partials.navbar-item',['lien'=>'deconnexion', 'texte'=>'Déconnexion'])
+                    @else
+
+                    @include('partials.navbar-item',['lien'=>'connexion', 'texte'=>'Connexion'])
+                    @include('partials.navbar-item',['lien'=>'inscription', 'texte'=>'Inscription'])
+                    @endauth
+                    
+                </div>
+                
+
+
+            </div>
+        </nav>
+
+
+
         <div class="container">
             @include('flash::message')
 

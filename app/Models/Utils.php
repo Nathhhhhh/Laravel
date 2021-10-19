@@ -9,11 +9,16 @@ use Illuminate\Auth\Authenticatable as BasicAuthenticatable;
 class Utils extends Model implements Authenticatable
 {
     use BasicAuthenticatable;
+    // protected $table ="mon_nom_de_table"; --> pour renommer la table 
 
     protected $fillable = ['email', 'mot_de_passe'];
 
     public function messages(){
         return $this->hasMany(Message::class)->latest();
+    }
+
+    public function suivis(){
+        return $this->belongsToMany(Utils::class, 'suivis','suiveur_id',"suivi_id");
     }
 
     /**

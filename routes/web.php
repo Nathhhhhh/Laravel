@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UtilsController;
+use App\Http\Controllers\SuivisController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ use App\Http\Controllers\UtilsController;
  ]);
 });
 
- 
+
 
 Route::get('/inscription','InscriptionController@formulaire');
 Route::post('/inscription','InscriptionController@traitement');
@@ -57,7 +58,7 @@ Route::group([
 
  Route::post('/message', [MessageController::class, 'nouveau']);
 
-
+ Route::post('/{email}/suivis', [SuivisController::class, 'nouveau']);
 });
 
 

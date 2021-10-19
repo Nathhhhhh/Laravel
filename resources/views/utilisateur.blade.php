@@ -3,7 +3,19 @@
 @section('contenu')
 
     <div class="section">
-        <h1 class="title is-l"> {{$utils -> email}} </h1> {{-- On a accès à  $utils car on l'a passé en param dans UtilsController--}}
+        <h1 class="title is-l level">  
+            <div class="level-left">
+                <div class="level-item">
+                {{$utils->email}} {{-- On a accès à  $utils car on l'a passé en param dans UtilsController--}}
+            </div>
+            @auth
+                <form action="/{{$utils->email}}/suivis" method="post" class="level-item">
+                    {{csrf_field()}}
+                    <button type="submit" class="button is-info">Suivre</button>
+                </form>
+            @endauth
+            </div>
+        </h1> 
 
         @if (auth()->check() AND auth()->user()->id=== $utils ->id)
             
