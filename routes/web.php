@@ -32,7 +32,7 @@ use App\Http\Controllers\UtilsController;
  ]);
 });
 
-
+ 
 
 Route::get('/inscription','InscriptionController@formulaire');
 Route::post('/inscription','InscriptionController@traitement');
