@@ -59,6 +59,7 @@ Route::group([
  Route::post('/message', [MessageController::class, 'nouveau']);
 
  Route::post('/{email}/suivis', [SuivisController::class, 'nouveau']);
+ Route::delete('/{email}/suivis', [SuivisController::class, 'enlever']);
 });
 
 

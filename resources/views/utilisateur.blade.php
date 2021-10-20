@@ -11,7 +11,19 @@
             @auth
                 <form action="/{{$utils->email}}/suivis" method="post" class="level-item">
                     {{csrf_field()}}
-                    <button type="submit" class="button is-info">Suivre</button>
+                    @if (auth()->user()->suit($utils))
+                    {{method_field('delete')}}
+                    {{-- @else
+                    {{method_field('post')}} --> On peut mettre cette ligne mais comme dans la methos dans le form est post pas besoin--}}
+                    @endif
+                    <button type="submit" class="button is-info">
+                        @if (auth()->user()->suit($utils))
+                            Ne plus suivre
+                        @else
+                            Suivre
+                        @endif
+                        
+                        </button>
                 </form>
             @endauth
             </div>
@@ -42,10 +54,6 @@
                     <button class="button is-link" type="submit">Publier</button>
                 </div>
             </div>
-
-
-       
-        
         </form>
 
         @endif

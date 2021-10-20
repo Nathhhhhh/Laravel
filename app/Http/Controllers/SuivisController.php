@@ -9,12 +9,23 @@ class SuivisController extends Controller
 {
     public function nouveau(){
         $utilsQuiVaSuivre = auth()->user();
-        $utilsQuiEstSuivi = Utils::where('email',request('email'))->firstOrFail();
+        $utilsQuiVaEstSuivi = Utils::where('email',request('email'))->firstOrFail();
         
-        $utilsQuiVaSuivre->suivis()->attach($utilsQuiEstSuivi);
+        $utilsQuiVaSuivre->suivis()->attach($utilsQuiVaEstSuivi);
 
-        flash("Vous suivez maintenant {$utilsQuiEstSuivi->email}.")->success();
+        flash("Vous suivez maintenant {$utilsQuiVaEstSuivi->email}.")->success();
 
         return back();
+    }
+    public function enlever(){
+        $utilsQuiSuit = auth()->user();
+        $utilsQuiEstSuivi = Utils::where('email',request('email'))->firstOrFail();
+        
+        $utilsQuiSuit->suivis()->detach($utilsQuiEstSuivi);
+
+        flash("Vous ne suivez plus {$utilsQuiEstSuivi->email}.")->success();
+
+        return back();
+
     }
 }

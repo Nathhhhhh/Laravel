@@ -21,6 +21,11 @@ class Utils extends Model implements Authenticatable
         return $this->belongsToMany(Utils::class, 'suivis','suiveur_id',"suivi_id");
     }
 
+    public function suit($util){
+        
+        return $this -> suivis()->where('suivi_id',$util->id)->exists();
+    }
+
     /**
      * Get the password for the user.
      *
