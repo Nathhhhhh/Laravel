@@ -5,7 +5,7 @@
 
 <form action="" method="post" class="section">
 
-   {{ csrf_field() }}
+   @csrf
 
     <div class="field">
         <label class="label">Adresse mail</label>

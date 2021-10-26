@@ -9,7 +9,7 @@
 
 
     <form class="section" action="/modification-motdepasse" method="post">
-        {{ csrf_field() }}
+        @csrf
     
         <div class="field">
             <label class="label">Nouveau mot de passe</label>

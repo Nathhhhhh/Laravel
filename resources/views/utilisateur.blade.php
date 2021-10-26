@@ -10,9 +10,9 @@
             </div>
             @auth
                 <form action="/{{$utils->email}}/suivis" method="post" class="level-item">
-                    {{csrf_field()}}
+                   @csrf
                     @if (auth()->user()->suit($utils))
-                    {{method_field('delete')}}
+                    @method('delete')
                     {{-- @else
                     {{method_field('post')}} --> On peut mettre cette ligne mais comme dans la methos dans le form est post pas besoin--}}
                     @endif
