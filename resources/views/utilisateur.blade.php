@@ -14,7 +14,7 @@
                     @if (auth()->user()->suit($utils))
                     @method('delete')
                     {{-- @else
-                    {{method_field('post')}} --> On peut mettre cette ligne mais comme dans la methos dans le form est post pas besoin--}}
+                    {{method_field('post')}} --> On peut mettre cette ligne mais comme dans la methode dans le form est post pas besoin--}}
                     @endif
                     <button type="submit" class="button is-info">
                         @if (auth()->user()->suit($utils))

@@ -10,24 +10,17 @@ use Illuminate\Queue\SerializesModels;
 class NouveauSuiveurMail extends Mailable
 {
     use Queueable, SerializesModels;
+    public $suiveur; // public car la fonction view va prendre en paramètre les variables public (et non private) grâce a Mailable
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
+
+    public function __construct($suiveur)
     {
-        //
+        $this->suiveur = $suiveur;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
+
     public function build()
     {
-        return $this->view('mails.nouveau_suiveur');//Dans le dossier mail
+        return $this->subject('Vous avez un nouveau follower !')->markdown('mails.nouveau_suiveur');//Dans le dossier mail
     }
 }
