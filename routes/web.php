@@ -5,6 +5,7 @@ use App\Http\Controllers\CompteController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UtilsController;
 use App\Http\Controllers\SuivisController;
+use App\Http\Controllers\ActualitesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,9 @@ Route::group([
  Route::get('/moncompte', [CompteController::class, 'accueil']);
  Route::get('/deconnexion', [CompteController::class, 'deconnexion']);
  Route::post('/modification-motdepasse', [CompteController::class, 'modificationMDP']);
+ Route::post('/modification-avatar', [CompteController::class, 'modificationAvatar']);
+
+ Route::get('/actualites',[ActualitesController::class,'liste']);
 
 
  Route::post('/message', [MessageController::class, 'nouveau']);

@@ -48,5 +48,18 @@ class CompteController extends Controller
 
         return(redirect('/moncompte'));
     }
+
+    public function modificationAvatar(){
+        request()->validate([
+            'avatar'=>['required','image'],
+        ]);
+        $chemin = request('avatar')->store('avatars','public');// Laravel sait que c'est une image donc on peut utiliser la fonction store pour stocker l'image dans un dossier
+        
+        auth()->user()->update([
+            'avatar'=>$chemin,
+        ]);
+        flash('Votre avatar a bien été mit à jour')->success();
+        return back();
+    }
     
 }

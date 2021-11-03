@@ -11,7 +11,7 @@ class Utils extends Model implements Authenticatable
     use BasicAuthenticatable;
     // protected $table ="mon_nom_de_table"; --> pour renommer la table 
 
-    protected $fillable = ['email', 'mot_de_passe'];
+    protected $fillable = ['email', 'mot_de_passe','avatar'];
 
     public function messages(){
         return $this->hasMany(Message::class)->latest();
